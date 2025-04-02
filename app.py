@@ -249,6 +249,10 @@ def load_chat_screen(assistant_id, assistant_title):
         #underPlayerCountBlurbText {
             font-size: 1.5vh;
         }
+
+        #MainMenu {
+            display: none;
+        }
     </style>
 """ 
     #Enable CSS
