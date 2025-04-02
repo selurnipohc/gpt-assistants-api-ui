@@ -28,6 +28,7 @@ enabled_file_upload_message = False
 
 client = openai.OpenAI(api_key=openai_api_key)
 
+st.set_page_config(layout="wide")
 
 class EventHandler(AssistantEventHandler):
     @override
@@ -259,7 +260,7 @@ def load_chat_screen(assistant_id, assistant_title):
     playerCountContainer = st.container()
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
-        if st.button("1 Player"):
+        if st.button("1 Player",use_container_width=True):
             st.write("1 Player")
         else:
             st.write("Goodbye")
