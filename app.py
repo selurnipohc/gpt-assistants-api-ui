@@ -256,7 +256,10 @@ def load_chat_screen(assistant_id, assistant_title):
             width: 70%;
             text-align: center;
         }
-
+        
+        img[data-testid="stLogo"] {
+            height: 3.5rem;
+        }
     </style>
 """
     #Enable CSS
@@ -264,7 +267,7 @@ def load_chat_screen(assistant_id, assistant_title):
 
     #Now construct Web Page via HTML
     st.title('Welcome!')
-    st.logo(image='DiversionsLogo.png',size='large')
+    st.logo(image='DiversionsLogo.png')
         
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
