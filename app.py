@@ -9,7 +9,6 @@ from openai import AssistantEventHandler
 from tools import TOOL_MAP
 from typing_extensions import override
 from dotenv import load_dotenv
-import streamlit_authenticator as stauth
 
 load_dotenv()
 
