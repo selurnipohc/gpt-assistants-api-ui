@@ -276,43 +276,98 @@ def load_chat_screen(assistant_id, assistant_title):
             button1_clicked = st.button("1 Player", key="playerOne",use_container_width=True)
         
     with col2:
-        if st.button("2 Players",key="playerTwo",use_container_width=True):
-            st.write("2 Players")
+        with stylable_container("lightBlue",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            button1_clicked = st.button("2 Players", key="playerTwo",use_container_width=True)
         
     with col3:
-        if st.button("3 Players",key="playerThree",use_container_width=True):
-            st.write("3 Players")
+        with stylable_container("lightBlue",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            button1_clicked = st.button("3 Players", key="playerThree",use_container_width=True)
         
     with col4:
-        if st.button("4 Players",key="playerFour",use_container_width=True):
-            st.write("4 Players")
+        with stylable_container("lightBlue",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            button1_clicked = st.button("4 Players", key="playerFour",use_container_width=True)
         
     with col5:
-        if st.button("5 Players",key="playerFive",use_container_width=True):
-            st.write("5 Players")
+        with stylable_container("lightBlue",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            button1_clicked = st.button("5 Players", key="playerFive",use_container_width=True)
         
     with col6:
-        if st.button("6 Players",key="playerSix",use_container_width=True):
-            st.write("6 Players")
+        with stylable_container("lightBlue",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            button1_clicked = st.button("6 Players", key="playerSix",use_container_width=True)
         
     with col7:
-        if st.button("7+ Players",key="playerSeven",use_container_width=True):
-            st.write("7 Players")
+        with stylable_container("lightBlue",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            button1_clicked = st.button("7 Players", key="player7",use_container_width=True)
+                                    
     playerCountContainer.markdown('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''',unsafe_allow_html=True)
 
     alternateStartersContainer = st.container(key="alternateStartersContainer")
     altcol1, altcol2, altcol3 = alternateStartersContainer.columns(3)
     with altcol1:
-        if st.button("Teach me about board games",key="Teach",use_container_width=True):
-            st.write("Teach me about board games")
+        with stylable_container("lightBlue",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            button1_clicked = st.button("Teach me about board games", key="Teach",use_container_width=True)
 
     with altcol2:
-        if st.button("I'm not sure where to start",key="Unsure",use_container_width=True):
-            st.write("I'm not sure where to start")
+        with stylable_container("lightBlue",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            button1_clicked = st.button("I'm not sure where to start", key="Unsure",use_container_width=True)
 
     with altcol3:
-        if st.button("Shuffle and deal me",key="Shuffle",use_container_width=True):
-            st.write("Shuffle and deal me")
+        with stylable_container("lightBlue",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            button1_clicked = st.button("Shuffle and deal me", key="Shuffle",use_container_width=True)
     
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
