@@ -246,7 +246,7 @@ def load_chat_screen(assistant_id, assistant_title):
             padding: 10px;
         }
 
-        [data-testid="baseButton-secondary"] {
+        button {
             border: solid 2px #BBE4F1;
             background: #EAF6FA;
             margin: 5px;
