@@ -264,7 +264,7 @@ def load_chat_screen(assistant_id, assistant_title):
 
     #Now construct Web Page via HTML
     st.title('Welcome!')
-    st.logo('DiversionsLogo.png',size='Large')
+    st.logo(image='DiversionsLogo.png',size='large')
         
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
