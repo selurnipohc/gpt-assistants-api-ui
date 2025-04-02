@@ -4,7 +4,6 @@ import re
 import json
 
 import streamlit as st
-from streamlit_extras.stylable_container import stylable_container
 import openai
 from openai import AssistantEventHandler
 from tools import TOOL_MAP
@@ -267,12 +266,8 @@ def load_chat_screen(assistant_id, assistant_title):
     playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
-        with stylable_container("green",css_styles="""
-    button {
-        background-color: #00FF00;
-        color: black;
-    }""",):
-            button1_clicked = st.button("Button 1", key="button1")
+        if st.button("1 Player",key="playerOne",use_container_width=True):
+            st.write("1 Player")
         
     with col2:
         if st.button("2 Players",key="playerTwo",use_container_width=True):
