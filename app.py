@@ -266,8 +266,8 @@ def load_chat_screen(assistant_id, assistant_title):
 
     #Now construct Web Page via HTML
     st.logo(image='DiversionsLogo.png')
-    st.html('<h1 id="welcomeHeader">Welcome!</h1>', unsafe_allow_html=True)
-    st.html('''<div id="instructionContainer"><b><p id="instructionText">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''')
+    st.markdown('<h1 id="welcomeHeader">Welcome!</h1>', unsafe_allow_html=True)
+    st.markdown('''<div id="instructionContainer"><b><p id="instructionText">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''',unsafe_allow_html=True)
     playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
@@ -297,7 +297,7 @@ def load_chat_screen(assistant_id, assistant_title):
     with col7:
         if st.button("7 Players",use_container_width=True):
             st.write("7 Players")
-    playerCountContainer.html('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''')
+    playerCountContainer.markdown('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''',unsafe_allow_html=True)
         
     
     user_msg = st.chat_input(
