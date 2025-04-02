@@ -215,7 +215,7 @@ def reset_chat():
 
 def load_chat_screen(assistant_id, assistant_title):
     #First set Pertinent CSS
-    container_style = """
+    css = """
     <style>
         .container {
             margin: auto;
@@ -223,33 +223,65 @@ def load_chat_screen(assistant_id, assistant_title):
             border: 2px solid #141F2B;
             padding: 10px;
             background-color: #F2F7F7;
+            border-radius: 15px;
         }
+
+        #welcomeText {
+            color: #2A4294;
+        }
+
+        #logo {
+            object-fit: contain;
+        }
+
+        #logoContainer {
+            margin: auto;
+            width: 20%;
+        }
+
+        #welcomeContainer {
+            position: absolute;
+            margin-left: 40%;
+            width: 70%;
+            text-align: center;
+        }
+
     </style>
 """
     #Enable CSS
-    st.markdown(container_style, unsafe_allow_html=True)
+    st.markdown(css, unsafe_allow_html=True)
 
-    #Now construct Web Page From Components
+    #Now construct Web Page via HTML
     container = st.container()
     with container:
         container.markdown("<div class='container'>", unsafe_allow_html=True)
-        st.logo('DiversionsLogo.png')
-        st.title(':#2A4294[Welcome!]')
-        user_msg = st.chat_input(
-            "Message", on_submit=disable_form, disabled=st.session_state.in_progress
-        )
-        if user_msg:
-            render_chat()
-            with st.chat_message("user"):
-                st.markdown(user_msg, True)
-            st.session_state.chat_log.append({"name": "user", "msg": user_msg})
-    
-            run_stream(user_msg, None, assistant_id)
-            st.session_state.in_progress = False
-            st.session_state.tool_call = None
-            st.rerun()
-    
+        st.html('''
+        <div id="wrapper">
+            <div id="banner">
+                <div id="logoContainer"><img id="logo" src="DiversionsLogo.png"></div>
+                <div id="welcomeContainer"><h2 id="welcomeText">Welcome!</h2></div>
+            </div>
+            <div id="instructions">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches.</div>
+            <div id="playerCountOptions">I'll be player count bubbles someday</div>
+            <div id="starterPromptsContainer">I'm additional starter option bubbles</div>
+        </div>
+        ''')
+        
+    user_msg = st.chat_input(
+        "Message", on_submit=disable_form, disabled=st.session_state.in_progress
+    )
+    if user_msg:
         render_chat()
+        with st.chat_message("user"):
+            st.markdown(user_msg, True)
+        st.session_state.chat_log.append({"name": "user", "msg": user_msg})
+
+        run_stream(user_msg, None, assistant_id)
+        st.session_state.in_progress = False
+        st.session_state.tool_call = None
+        st.rerun()
+
+    render_chat()
         
 def main():
     single_agent_id = os.environ.get("ASSISTANT_ID", None)
