@@ -139,13 +139,8 @@ def create_thread(content, file):
 
 
 def create_message(thread, content, file):
-    attachments = []
-    if file is not None:
-        attachments.append(
-            {"file_id": file.id, "tools": [{"type": "code_interpreter"}, {"type": "file_search"}]}
-        )
     client.beta.threads.messages.create(
-        thread_id=thread.id, role="user", content=content, attachments=attachments
+        thread_id=thread.id, role="user", content=content, attachments=[]
     )
 
 
@@ -273,7 +268,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("1 Player", key="playerOne",use_container_width=True)
+            playerOne = st.button("1 Player", key="playerOne",use_container_width=True)
         
     with col2:
         with stylable_container("playerTwo",
@@ -283,7 +278,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("2 Players", key="playerTwo",use_container_width=True)
+            playerTwo = st.button("2 Players", key="playerTwo",use_container_width=True)
         
     with col3:
         with stylable_container("playerThree",
@@ -293,7 +288,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("3 Players", key="playerThree",use_container_width=True)
+            playerThree = st.button("3 Players", key="playerThree",use_container_width=True)
         
     with col4:
         with stylable_container("playerFour",
@@ -303,7 +298,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("4 Players", key="playerFour",use_container_width=True)
+            playerFour = st.button("4 Players", key="playerFour",use_container_width=True)
         
     with col5:
         with stylable_container("playerFive",
@@ -313,7 +308,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("5 Players", key="playerFive",use_container_width=True)
+            playerFive = st.button("5 Players", key="playerFive",use_container_width=True)
         
     with col6:
         with stylable_container("playerSix",
@@ -323,7 +318,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("6 Players", key="playerSix",use_container_width=True)
+            playerSix = st.button("6 Players", key="playerSix",use_container_width=True)
         
     with col7:
         with stylable_container("playerSeven",
@@ -333,7 +328,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("7 Players", key="playerSeven",use_container_width=True)
+            playerSeven = st.button("7 Players", key="playerSeven",use_container_width=True)
                                     
     playerCountContainer.markdown('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''',unsafe_allow_html=True)
 
@@ -347,7 +342,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("Teach me about board games", key="Teach",use_container_width=True)
+            Teach = st.button("Teach me about board games", key="Teach",use_container_width=True)
 
     with altcol2:
         with stylable_container("Unsure",
@@ -357,7 +352,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("I'm not sure where to start", key="Unsure",use_container_width=True)
+            Unsure = st.button("I'm not sure where to start", key="Unsure",use_container_width=True)
 
     with altcol3:
         with stylable_container("Shuffle",
@@ -367,8 +362,11 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("Shuffle and deal me", key="Shuffle",use_container_width=True)
-    
+            Shuffle = st.button("Shuffle and deal me", key="Shuffle",use_container_width=True)
+
+    buttonAutoMessage = None
+    if playerOne:
+        st.write('Clicked 1 Player Button')
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
