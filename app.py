@@ -234,7 +234,7 @@ def load_chat_screen(assistant_id, assistant_title):
             justify-content: center;
         }
         
-        #welcomeText {
+        h1 {
             color: #2A4294;
         }
 
@@ -263,12 +263,8 @@ def load_chat_screen(assistant_id, assistant_title):
     st.markdown(css, unsafe_allow_html=True)
 
     #Now construct Web Page via HTML
-    wrapper = st.container()
-    with wrapper:
-        wrapper.markdown("<div id='wrapper'>", unsafe_allow_html=True)
-        wrapper.markdown('''
-        <h1>TESTING</h1>''')
-        wrapper.markdown("</div>", unsafe_allow_html=True)
+    st.title('Welcome!')
+    st.logo('DiversionsLogo.png',size='Large')
         
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
