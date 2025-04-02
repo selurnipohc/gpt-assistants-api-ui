@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gptassistantsapiui"
+name = "diversionBoardGameBot"
 version = "0.1.0"
 description = ""
 authors = ["ryo-ma <saka_ro@yahoo.co.jp>"]
