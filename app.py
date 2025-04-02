@@ -214,6 +214,13 @@ def reset_chat():
 
 
 def load_chat_screen(assistant_id, assistant_title):
+    #load icon file
+    file_ = open("DiversionsLogo.png", "rb")
+    contents = file_.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file_.close()
+
+    
     #First set Pertinent CSS
     css = """
     <style>
@@ -258,7 +265,7 @@ def load_chat_screen(assistant_id, assistant_title):
     st.html('''
     <div id="wrapper">
         <div id="banner">
-            <div id="logoContainer"><img id="logo" src="DiversionsLogo.png"></div>
+            <div id="logoContainer"><img id="logo" src="data:image/png;base64,{data_url}"></div>
             <div id="welcomeContainer"><h1 id="welcomeText">Welcome!</h1></div>
         </div>
         <div id="instructions">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches.</div>''')
