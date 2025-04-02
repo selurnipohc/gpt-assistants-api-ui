@@ -215,21 +215,9 @@ def reset_chat():
 
 
 def load_chat_screen(assistant_id, assistant_title):
-
-    @st.cache(allow_output_mutation=True)
-    def get_base64_of_bin_file(bin_file):
-        with open(bin_file, 'rb') as f:
-            data = f.read()
-        return base64.b64encode(data).decode()
-    bin_str = get_base64_of_bin_file('shineBackground.png')
     #First set Pertinent CSS
     css = """
     <style>
-        body {
-            background-image: url("data:image/png;base64,%s");
-            background-size: cover;
-        }
-        
         .big-font {
             color: #2A4294;
             font-size: 9vh;
@@ -248,25 +236,61 @@ def load_chat_screen(assistant_id, assistant_title):
         p {
             font-size: 2vh;
         }
+
+        [data-testid="stVerticalBlockBorderWrapper"] {
+            align-text:center;
+            justify-content: center;
+            background: #E3E8E9;
+        }
+
+        [data-testid="baseButton-secondary"] {
+            border: solid 2px #BBE4F1;
+            background: #EAF6FA;
+        }
     </style>
-""" % bin_str
+""" 
     #Enable CSS
     st.markdown(css, unsafe_allow_html=True)
 
     #Now construct Web Page via HTML
     st.logo(image='DiversionsLogo.png')
     st.markdown('<h1 class="big-font">Welcome!</h1>', unsafe_allow_html=True)
-    st.html('''<div id="instructions"><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches</p></div>''')
+    st.html('''<div id="instructions"><b><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''')
     playerCountContainer = st.container()
-    col1, col2 = playerCountContainer.columns(2)
+    col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
-        if st.button("1Player"):
+        if st.button("1 Player"):
             st.write("1 Player")
         else:
             st.write("Goodbye")
     with col2:
-        if st.button("2Player"):
+        if st.button("2 Player"):
             st.write("2 Players")
+        else:
+            st.write("Goodbye")
+    with col3:
+        if st.button("3 Player"):
+            st.write("3 Players")
+        else:
+            st.write("Goodbye")
+    with col4:
+        if st.button("4 Player"):
+            st.write("4 Players")
+        else:
+            st.write("Goodbye")
+    with col5:
+        if st.button("5 Player"):
+            st.write("5 Players")
+        else:
+            st.write("Goodbye")
+    with col6:
+        if st.button("6 Player"):
+            st.write("6 Players")
+        else:
+            st.write("Goodbye")
+    with col7:
+        if st.button("7 Player"):
+            st.write("7 Players")
         else:
             st.write("Goodbye")
             
