@@ -258,11 +258,13 @@ def load_chat_screen(assistant_id, assistant_title):
     st.markdown('<h1 class="big-font">Welcome!</h1>', unsafe_allow_html=True)
     st.html('''<div id="instructions"><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches</p></div>''')
     playerCountContainer = st.container()
-    with playerCountContainer:
+    col1, col2 = playerCountContainer.columns(2)
+    with col1:
         if st.button("1Player"):
             st.write("1 Player")
         else:
             st.write("Goodbye")
+    with col2:
         if st.button("2Player"):
             st.write("2 Players")
         else:
