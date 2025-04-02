@@ -257,7 +257,7 @@ def load_chat_screen(assistant_id, assistant_title):
     st.logo(image='DiversionsLogo.png')
     st.markdown('<h1 class="big-font">Welcome!</h1>', unsafe_allow_html=True)
     st.html('''<div id="instructions"><b><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''')
-    playerCountContainer = st.container()
+    playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
         if st.button("1 Player",use_container_width=True):
@@ -265,32 +265,32 @@ def load_chat_screen(assistant_id, assistant_title):
         else:
             st.write("Goodbye")
     with col2:
-        if st.button("2 Player"):
+        if st.button("2 Player",use_container_width=True):
             st.write("2 Players")
         else:
             st.write("Goodbye")
     with col3:
-        if st.button("3 Player"):
+        if st.button("3 Player",use_container_width=True):
             st.write("3 Players")
         else:
             st.write("Goodbye")
     with col4:
-        if st.button("4 Player"):
+        if st.button("4 Player",use_container_width=True):
             st.write("4 Players")
         else:
             st.write("Goodbye")
     with col5:
-        if st.button("5 Player"):
+        if st.button("5 Player",use_container_width=True):
             st.write("5 Players")
         else:
             st.write("Goodbye")
     with col6:
-        if st.button("6 Player"):
+        if st.button("6 Player",use_container_width=True):
             st.write("6 Players")
         else:
             st.write("Goodbye")
     with col7:
-        if st.button("7 Player"):
+        if st.button("7 Player",use_container_width=True):
             st.write("7 Players")
         else:
             st.write("Goodbye")
