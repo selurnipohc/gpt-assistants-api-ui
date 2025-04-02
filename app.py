@@ -239,10 +239,11 @@ def load_chat_screen(assistant_id, assistant_title):
         }
 
         .st-key-playerCountContainer {
-            align-text:center;
+            align-text: center;
             justify-content: center;
             background: #E3E8E9;
             border-radius: 15px;
+            padding: 10px;
         }
 
         [data-testid="baseButton-secondary"] {
@@ -295,10 +296,23 @@ def load_chat_screen(assistant_id, assistant_title):
             st.write("6 Players")
         
     with col7:
-        if st.button("7 Players",use_container_width=True):
+        if st.button("7+ Players",use_container_width=True):
             st.write("7 Players")
     playerCountContainer.markdown('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''',unsafe_allow_html=True)
-        
+
+    alternateStartersContainer = st.container(key="alternateStartersContainer")
+    altcol1, altcol2, altcol3 = alternateStartersContainer.columns(3)
+    with altcol1:
+        if st.button("Teach me about board games",use_container_width=True):
+            st.write("Teach me about board games")
+
+    with altcol2:
+        if st.button("I'm not sure where to start",use_container_width=True):
+            st.write("I'm not sure where to start")
+
+    with altcol3:
+        if st.button("Shuffle and deal me",use_container_width=True):
+            st.write("Shuffle and deal me")
     
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
