@@ -272,7 +272,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     background-color: #BBE4F1;
                                     color: #141F2B;
                                 }""",):
-            button1_clicked = st.button("1 Player", key="playerOne")
+            button1_clicked = st.button("1 Player", key="playerOne",use_container_width=True)
         
     with col2:
         if st.button("2 Players",key="playerTwo",use_container_width=True):
