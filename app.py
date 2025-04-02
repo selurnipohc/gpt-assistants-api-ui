@@ -218,10 +218,11 @@ def load_chat_screen(assistant_id, assistant_title):
     container_style = """
     <style>
         .container {
-            border: 2px solid #3498db;
-            border-radius: 8px;
+            margin: auto;
+            width: 80%;
+            border: 2px solid #141F2B;
             padding: 10px;
-            margin-bottom: 20px;
+            background-color: #F2F7F7;
         }
     </style>
 """
@@ -229,8 +230,6 @@ def load_chat_screen(assistant_id, assistant_title):
     st.markdown(container_style, unsafe_allow_html=True)
 
     #Now construct Web Page From Components
-    st.title(assistant_title if assistant_title else "")
-    st.logo('DiversionsLogo.png')
     container = st.container()
     with container:
         container.markdown("<div class='container'>", unsafe_allow_html=True)
@@ -251,9 +250,7 @@ def load_chat_screen(assistant_id, assistant_title):
             st.rerun()
     
         render_chat()
-        container.markdown("</div>", unsafe_allow_html=True)
-
-
+        
 def main():
     single_agent_id = os.environ.get("ASSISTANT_ID", None)
     single_agent_title = os.environ.get("ASSISTANT_TITLE", "Assistants API UI")
