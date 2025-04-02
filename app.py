@@ -234,7 +234,7 @@ def load_chat_screen(assistant_id, assistant_title):
             text-align: center;
         }
 
-        p {
+        #instructionText {
             font-size: 2vh;
         }
 
@@ -250,6 +250,15 @@ def load_chat_screen(assistant_id, assistant_title):
             background: #EAF6FA;
             margin: 5px;
         }
+
+        #underPlayerCountBlurb {
+            color: #141F2B;
+            text-align: center;
+        }
+
+        #underPlayerCountBlurbText {
+            font-size: 1.5vh;
+        }
     </style>
 """ 
     #Enable CSS
@@ -258,46 +267,38 @@ def load_chat_screen(assistant_id, assistant_title):
     #Now construct Web Page via HTML
     st.logo(image='DiversionsLogo.png')
     st.markdown('<h1 id="welcomeHeader">Welcome!</h1>', unsafe_allow_html=True)
-    st.html('''<div id="instructions"><b><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''')
+    st.html('''<div id="instructionContainer"><b><p id="instructionText">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''')
     playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
         if st.button("1 Player",use_container_width=True):
             st.write("1 Player")
-        else:
-            st.write("Goodbye")
+        
     with col2:
         if st.button("2 Players",use_container_width=True):
             st.write("2 Players")
-        else:
-            st.write("Goodbye")
+        
     with col3:
         if st.button("3 Players",use_container_width=True):
             st.write("3 Players")
-        else:
-            st.write("Goodbye")
+        
     with col4:
         if st.button("4 Players",use_container_width=True):
             st.write("4 Players")
-        else:
-            st.write("Goodbye")
+        
     with col5:
         if st.button("5 Players",use_container_width=True):
             st.write("5 Players")
-        else:
-            st.write("Goodbye")
+        
     with col6:
         if st.button("6 Players",use_container_width=True):
             st.write("6 Players")
-        else:
-            st.write("Goodbye")
+        
     with col7:
         if st.button("7 Players",use_container_width=True):
             st.write("7 Players")
-        else:
-            st.write("Goodbye")
-            
-    
+    playerCountContainer.html('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''')
+        
     
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
