@@ -215,11 +215,18 @@ def reset_chat():
 
 
 def load_chat_screen(assistant_id, assistant_title):
+
+    @st.cache(allow_output_mutation=True)
+    def get_base64_of_bin_file(bin_file):
+        with open(bin_file, 'rb') as f:
+            data = f.read()
+        return base64.b64encode(data).decode()
+    bin_str = get_base64_of_bin_file('shineBackground.png')
     #First set Pertinent CSS
     css = """
     <style>
         body {
-            background-image: url("shineBackground.png");
+            background-image: url("data:image/png;base64,%s");
             background-size: cover;
         }
         
@@ -242,7 +249,7 @@ def load_chat_screen(assistant_id, assistant_title):
             font-size: 2vh;
         }
     </style>
-"""
+""" % bin_str
     #Enable CSS
     st.markdown(css, unsafe_allow_html=True)
 
