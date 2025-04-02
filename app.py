@@ -266,7 +266,7 @@ def load_chat_screen(assistant_id, assistant_title):
     wrapper = st.container()
     with wrapper:
         wrapper.markdown("<div id='wrapper'>", unsafe_allow_html=True)
-        wrapper.html('''
+        wrapper.markdown('''
         <h1>TESTING</h1>''')
         wrapper.markdown("</div>", unsafe_allow_html=True)
         
