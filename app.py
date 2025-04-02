@@ -271,6 +271,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     button {
                                     background-color: #BBE4F1;
                                     color: #141F2B;
+                                    font-size: 1vh;
                                 }""",):
             button1_clicked = st.button("1 Player", key="playerOne",use_container_width=True)
         
