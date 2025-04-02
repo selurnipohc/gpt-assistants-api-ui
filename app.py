@@ -226,8 +226,10 @@ def load_chat_screen(assistant_id, assistant_title):
     css = """
     <style>
         h1 {
+            position: absolute;
+            top: 0px;
             color: #2A4294;
-            text-size: 4.5rem;
+            text-size: 10vh;
         }
 
         img[data-testid="stLogo"] {
@@ -235,7 +237,7 @@ def load_chat_screen(assistant_id, assistant_title):
         }
 
         #instructions {
-            font-size: 2rem;
+            font-size: 4rem;
             color: #141F2B;
         }
     </style>
