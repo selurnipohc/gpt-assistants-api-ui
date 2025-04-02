@@ -263,10 +263,12 @@ def load_chat_screen(assistant_id, assistant_title):
     st.markdown(css, unsafe_allow_html=True)
 
     #Now construct Web Page via HTML
-    components.html('''
+    st.html('''
     <div id="wrapper">
         <div id="banner">
-            <div id="logoContainer"><img id="logo" src="data:image/png;base64,{data_url}"></div>
+            <div id="logoContainer">''')
+    st.image('DiversionsLogo.png',caption="Diversions Logo")
+    st.html('''</div>
             <div id="welcomeContainer"><h1 id="welcomeText">Welcome!</h1></div>
         </div>
         <div id="instructions">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches.</div>''')
@@ -274,7 +276,7 @@ def load_chat_screen(assistant_id, assistant_title):
         st.write("Why hello there")
     else:
         st.write("Goodbye")
-    components.html('''
+    st.html('''
         <div id="playerCountOptions">I'll be player count bubbles someday</div>
         <div id="starterPromptsContainer">I'm additional starter option bubbles</div>
     </div>
