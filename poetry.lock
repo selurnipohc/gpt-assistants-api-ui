@@ -357,7 +357,7 @@ files = [
 ]
 
 [package.dependencies]
-streamlit = ">=1.18.0"
+streamlit = ">=1.44.0"
 
 [[package]]
 name = "flake8"
