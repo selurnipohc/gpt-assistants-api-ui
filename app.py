@@ -219,7 +219,7 @@ def load_chat_screen(assistant_id, assistant_title):
     #First set Pertinent CSS
     css = """
     <style>
-        .big-font {
+        #welcomeHeader {
             color: #2A4294;
             font-size: 9vh;
             text-align: center;
@@ -242,6 +242,7 @@ def load_chat_screen(assistant_id, assistant_title):
             align-text:center;
             justify-content: center;
             background: #E3E8E9;
+            border-radius: 15px;
         }
 
         [data-testid="baseButton-secondary"] {
@@ -256,7 +257,7 @@ def load_chat_screen(assistant_id, assistant_title):
 
     #Now construct Web Page via HTML
     st.logo(image='DiversionsLogo.png')
-    st.markdown('<h1 class="big-font">Welcome!</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 id="welcomeHeader">Welcome!</h1>', unsafe_allow_html=True)
     st.html('''<div id="instructions"><b><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''')
     playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
