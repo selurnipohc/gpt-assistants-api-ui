@@ -234,6 +234,8 @@ def load_chat_screen(assistant_id, assistant_title):
     container = st.container()
     with container:
         container.markdown("<div class='container'>", unsafe_allow_html=True)
+        st.logo('DiversionsLogo.png')
+        st.title(':#2A4294[Welcome!]')
         user_msg = st.chat_input(
             "Message", on_submit=disable_form, disabled=st.session_state.in_progress
         )
