@@ -229,7 +229,7 @@ def load_chat_screen(assistant_id, assistant_title):
             height: 9vh;
         }
 
-        #instructions {
+        #instructionContainer {
             color: #141F2B;
             text-align: center;
         }
