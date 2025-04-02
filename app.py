@@ -266,7 +266,7 @@ def load_chat_screen(assistant_id, assistant_title):
     playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
-        with stylable_container("lightBlue",
+        with stylable_container("playerOne",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
@@ -276,7 +276,7 @@ def load_chat_screen(assistant_id, assistant_title):
             button1_clicked = st.button("1 Player", key="playerOne",use_container_width=True)
         
     with col2:
-        with stylable_container("lightBlue",
+        with stylable_container("playerTwo",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
@@ -286,7 +286,7 @@ def load_chat_screen(assistant_id, assistant_title):
             button1_clicked = st.button("2 Players", key="playerTwo",use_container_width=True)
         
     with col3:
-        with stylable_container("lightBlue",
+        with stylable_container("playerThree",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
@@ -296,7 +296,7 @@ def load_chat_screen(assistant_id, assistant_title):
             button1_clicked = st.button("3 Players", key="playerThree",use_container_width=True)
         
     with col4:
-        with stylable_container("lightBlue",
+        with stylable_container("playerFour",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
@@ -306,7 +306,7 @@ def load_chat_screen(assistant_id, assistant_title):
             button1_clicked = st.button("4 Players", key="playerFour",use_container_width=True)
         
     with col5:
-        with stylable_container("lightBlue",
+        with stylable_container("playerFive",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
@@ -316,7 +316,7 @@ def load_chat_screen(assistant_id, assistant_title):
             button1_clicked = st.button("5 Players", key="playerFive",use_container_width=True)
         
     with col6:
-        with stylable_container("lightBlue",
+        with stylable_container("playerSix",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
@@ -326,21 +326,21 @@ def load_chat_screen(assistant_id, assistant_title):
             button1_clicked = st.button("6 Players", key="playerSix",use_container_width=True)
         
     with col7:
-        with stylable_container("lightBlue",
+        with stylable_container("playerSeven",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            button1_clicked = st.button("7 Players", key="player7",use_container_width=True)
+            button1_clicked = st.button("7 Players", key="playerSeven",use_container_width=True)
                                     
     playerCountContainer.markdown('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''',unsafe_allow_html=True)
 
     alternateStartersContainer = st.container(key="alternateStartersContainer")
     altcol1, altcol2, altcol3 = alternateStartersContainer.columns(3)
     with altcol1:
-        with stylable_container("lightBlue",
+        with stylable_container("Teach",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
@@ -350,7 +350,7 @@ def load_chat_screen(assistant_id, assistant_title):
             button1_clicked = st.button("Teach me about board games", key="Teach",use_container_width=True)
 
     with altcol2:
-        with stylable_container("lightBlue",
+        with stylable_container("Unsure",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
@@ -360,7 +360,7 @@ def load_chat_screen(assistant_id, assistant_title):
             button1_clicked = st.button("I'm not sure where to start", key="Unsure",use_container_width=True)
 
     with altcol3:
-        with stylable_container("lightBlue",
+        with stylable_container("Shuffle",
                                 css_styles="""
                                     button {
                                     background-color: #BBE4F1;
