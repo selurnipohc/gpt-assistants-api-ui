@@ -236,6 +236,7 @@ def load_chat_screen(assistant_id, assistant_title):
         
         h1 {
             color: #2A4294;
+            text-size: 4.5rem
         }
 
         #logo {
@@ -258,7 +259,7 @@ def load_chat_screen(assistant_id, assistant_title):
         }
         
         img[data-testid="stLogo"] {
-            height: 3.5rem;
+            height: 4.5rem;
         }
     </style>
 """
@@ -268,22 +269,24 @@ def load_chat_screen(assistant_id, assistant_title):
     #Now construct Web Page via HTML
     st.title('Welcome!')
     st.logo(image='DiversionsLogo.png')
-        
-    user_msg = st.chat_input(
-        "Message", on_submit=disable_form, disabled=st.session_state.in_progress
-    )
-    if user_msg:
+
+    chatBox = st.container()
+    with chatBox:
+        user_msg = st.chat_input(
+            "Message", on_submit=disable_form, disabled=st.session_state.in_progress
+        )
+        if user_msg:
+            render_chat()
+            with st.chat_message("user"):
+                st.markdown(user_msg, True)
+            st.session_state.chat_log.append({"name": "user", "msg": user_msg})
+    
+            run_stream(user_msg, None, assistant_id)
+            st.session_state.in_progress = False
+            st.session_state.tool_call = None
+            st.rerun()
+    
         render_chat()
-        with st.chat_message("user"):
-            st.markdown(user_msg, True)
-        st.session_state.chat_log.append({"name": "user", "msg": user_msg})
-
-        run_stream(user_msg, None, assistant_id)
-        st.session_state.in_progress = False
-        st.session_state.tool_call = None
-        st.rerun()
-
-    render_chat()
         
 def main():
     single_agent_id = os.environ.get("ASSISTANT_ID", None)
