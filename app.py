@@ -215,16 +215,14 @@ def reset_chat():
 
 
 def load_chat_screen(assistant_id, assistant_title):
-    #load icon file
-    file_ = open("DiversionsLogo.png", "rb")
-    contents = file_.read()
-    data_url = base64.b64encode(contents).decode("utf-8")
-    file_.close()
-
-    
     #First set Pertinent CSS
     css = """
     <style>
+        body {
+            background-image: url("shineBackground.png");
+            background-size: cover;
+        }
+        
         .big-font {
             color: #2A4294;
             font-size: 9vh;
@@ -254,28 +252,32 @@ def load_chat_screen(assistant_id, assistant_title):
     st.html('''<div id="instructions"><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches</p></div>''')
     playerCountContainer = st.container()
     with playerCountContainer:
-        if st.button("Say hello"):
-            st.write("Why hello there")
+        if st.button("1Player"):
+            st.write("1 Player")
+        else:
+            st.write("Goodbye")
+        if st.button("2Player"):
+            st.write("2 Players")
         else:
             st.write("Goodbye")
             
-    chatBox = st.container()
-    with chatBox:
-        user_msg = st.chat_input(
-            "Message", on_submit=disable_form, disabled=st.session_state.in_progress
-        )
-        if user_msg:
-            render_chat()
-            with st.chat_message("user"):
-                st.markdown(user_msg, True)
-            st.session_state.chat_log.append({"name": "user", "msg": user_msg})
     
-            run_stream(user_msg, None, assistant_id)
-            st.session_state.in_progress = False
-            st.session_state.tool_call = None
-            st.rerun()
     
+    user_msg = st.chat_input(
+        "Message", on_submit=disable_form, disabled=st.session_state.in_progress
+    )
+    if user_msg:
         render_chat()
+        with st.chat_message("user"):
+            st.markdown(user_msg, True)
+        st.session_state.chat_log.append({"name": "user", "msg": user_msg})
+
+        run_stream(user_msg, None, assistant_id)
+        st.session_state.in_progress = False
+        st.session_state.tool_call = None
+        st.rerun()
+
+    render_chat()
         
 def main():
     single_agent_id = os.environ.get("ASSISTANT_ID", None)
