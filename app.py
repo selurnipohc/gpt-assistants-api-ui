@@ -272,46 +272,46 @@ def load_chat_screen(assistant_id, assistant_title):
     playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
-        if st.button("1 Player",use_container_width=True):
+        if st.button("1 Player",key="playerOne",use_container_width=True):
             st.write("1 Player")
         
     with col2:
-        if st.button("2 Players",use_container_width=True):
+        if st.button("2 Players",key="playerTwo",use_container_width=True):
             st.write("2 Players")
         
     with col3:
-        if st.button("3 Players",use_container_width=True):
+        if st.button("3 Players",key="playerThree",use_container_width=True):
             st.write("3 Players")
         
     with col4:
-        if st.button("4 Players",use_container_width=True):
+        if st.button("4 Players",key="playerFour",use_container_width=True):
             st.write("4 Players")
         
     with col5:
-        if st.button("5 Players",use_container_width=True):
+        if st.button("5 Players",key="playerFive",use_container_width=True):
             st.write("5 Players")
         
     with col6:
-        if st.button("6 Players",use_container_width=True):
+        if st.button("6 Players",key="playerSix",use_container_width=True):
             st.write("6 Players")
         
     with col7:
-        if st.button("7+ Players",use_container_width=True):
+        if st.button("7+ Players",key="playerSeven",use_container_width=True):
             st.write("7 Players")
     playerCountContainer.markdown('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''',unsafe_allow_html=True)
 
     alternateStartersContainer = st.container(key="alternateStartersContainer")
     altcol1, altcol2, altcol3 = alternateStartersContainer.columns(3)
     with altcol1:
-        if st.button("Teach me about board games",use_container_width=True):
+        if st.button("Teach me about board games",key="Teach",use_container_width=True):
             st.write("Teach me about board games")
 
     with altcol2:
-        if st.button("I'm not sure where to start",use_container_width=True):
+        if st.button("I'm not sure where to start",key="Unsure",use_container_width=True):
             st.write("I'm not sure where to start")
 
     with altcol3:
-        if st.button("Shuffle and deal me",use_container_width=True):
+        if st.button("Shuffle and deal me",key="Shuffle",use_container_width=True):
             st.write("Shuffle and deal me")
     
     user_msg = st.chat_input(
