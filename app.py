@@ -266,13 +266,13 @@ def load_chat_screen(assistant_id, assistant_title):
     playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
-        with stylable_container("green",
+        with stylable_container("lightBlue",
                                 css_styles="""
                                     button {
-                                    background-color: #00FF00;
-                                    color: black;
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
                                 }""",):
-            button1_clicked = st.button("Button 1", key="button1")
+            button1_clicked = st.button("1 Player", key="playerOne")
         
     with col2:
         if st.button("2 Players",key="playerTwo",use_container_width=True):
