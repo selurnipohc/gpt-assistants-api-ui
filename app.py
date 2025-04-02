@@ -217,15 +217,15 @@ def load_chat_screen(assistant_id, assistant_title):
     #First set Pertinent CSS
     css = """
     <style>
-        .container {
-            margin: auto;
-            width: 80%;
-            border: 2px solid #141F2B;
-            padding: 10px;
-            background-color: #F2F7F7;
-            border-radius: 15px;
+        #wrapper {
+        display: flex;
+        width = 90%;
+        margin: auto;
+        background-color: #F2F7F7;
+        text-align: center;
+        justify-content: center;
         }
-
+        
         #welcomeText {
             color: #2A4294;
         }
@@ -235,8 +235,11 @@ def load_chat_screen(assistant_id, assistant_title):
         }
 
         #logoContainer {
-            margin: auto;
+            position: absolute;
+            top: 10px;
+            left: 10px;
             width: 20%;
+            height: auto;
         }
 
         #welcomeContainer {
@@ -252,20 +255,22 @@ def load_chat_screen(assistant_id, assistant_title):
     st.markdown(css, unsafe_allow_html=True)
 
     #Now construct Web Page via HTML
-    container = st.container()
-    with container:
-        container.markdown("<div class='container'>", unsafe_allow_html=True)
-        st.html('''
-        <div id="wrapper">
-            <div id="banner">
-                <div id="logoContainer"><img id="logo" src="DiversionsLogo.png"></div>
-                <div id="welcomeContainer"><h2 id="welcomeText">Welcome!</h2></div>
-            </div>
-            <div id="instructions">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches.</div>
-            <div id="playerCountOptions">I'll be player count bubbles someday</div>
-            <div id="starterPromptsContainer">I'm additional starter option bubbles</div>
+    st.html('''
+    <div id="wrapper">
+        <div id="banner">
+            <div id="logoContainer"><img id="logo" src="DiversionsLogo.png"></div>
+            <div id="welcomeContainer"><h1 id="welcomeText">Welcome!</h1></div>
         </div>
-        ''')
+        <div id="instructions">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches.</div>''')
+    if st.button("Say hello"):
+        st.write("Why hello there")
+    else:
+        st.write("Goodbye")
+    st.html('''
+        <div id="playerCountOptions">I'll be player count bubbles someday</div>
+        <div id="starterPromptsContainer">I'm additional starter option bubbles</div>
+    </div>
+    ''')
         
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
