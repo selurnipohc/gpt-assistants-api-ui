@@ -229,7 +229,7 @@ def load_chat_screen(assistant_id, assistant_title):
             color: #2A4294;
             font-size: 9vh;
             text-align: center;
-            position: fixed;
+            position: absolute;
             top: 1.5vh;
             left: 40vw;
         }
@@ -241,7 +241,7 @@ def load_chat_screen(assistant_id, assistant_title):
         #instructions {
             color: #141F2B;
             text-align: center;
-            position: fixed;
+            position: absolute;
             top: 5vh;
             left: 40vw;
         }
