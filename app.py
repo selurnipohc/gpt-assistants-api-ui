@@ -214,23 +214,43 @@ def reset_chat():
 
 
 def load_chat_screen(assistant_id, assistant_title):
+    #First set Pertinent CSS
+    container_style = """
+    <style>
+        .container1 {
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .container2 {
+            /* Add styles for Container 2 if needed */
+        }
+    </style>
+"""
+    #Enable CSS
+    st.markdown(container_style, unsafe_allow_html=True)
     st.title(assistant_title if assistant_title else "")
     st.logo('DiversionsLogo.png')
-    user_msg = st.chat_input(
-        "Message", on_submit=disable_form, disabled=st.session_state.in_progress
-    )
-    if user_msg:
+    
+    with st.container() as container1:
+        container1.markdown("<div class='container1'>", unsafe_allow_html=True)
+        user_msg = st.chat_input(
+            "Message", on_submit=disable_form, disabled=st.session_state.in_progress
+        )
+        if user_msg:
+            render_chat()
+            with st.chat_message("user"):
+                st.markdown(user_msg, True)
+            st.session_state.chat_log.append({"name": "user", "msg": user_msg})
+    
+            run_stream(user_msg, None, assistant_id)
+            st.session_state.in_progress = False
+            st.session_state.tool_call = None
+            st.rerun()
+    
         render_chat()
-        with st.chat_message("user"):
-            st.markdown(user_msg, True)
-        st.session_state.chat_log.append({"name": "user", "msg": user_msg})
-
-        run_stream(user_msg, None, assistant_id)
-        st.session_state.in_progress = False
-        st.session_state.tool_call = None
-        st.rerun()
-
-    render_chat()
+        container1.markdown("</div>", unsafe_allow_html=True)
 
 
 def main():
