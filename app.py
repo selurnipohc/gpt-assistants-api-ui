@@ -214,24 +214,8 @@ def reset_chat():
 
 
 def load_chat_screen(assistant_id, assistant_title):
-    if enabled_file_upload_message:
-        uploaded_file = st.sidebar.file_uploader(
-            enabled_file_upload_message,
-            type=[
-                "txt",
-                "pdf",
-                "csv",
-                "json",
-                "geojson",
-                "xlsx",
-                "xls",
-            ],
-            disabled=st.session_state.in_progress,
-        )
-    else:
-        uploaded_file = None
-
     st.title(assistant_title if assistant_title else "")
+    st.logo('DiversionsLogo.png')
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
