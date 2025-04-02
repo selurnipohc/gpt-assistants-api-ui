@@ -379,6 +379,12 @@ def load_chat_screen(assistant_id, assistant_title):
         buttonAutoMessage = "Could you recommend me some games that I can play with 6 players; especially if they're best at 6?"
     elif playerSeven:
         buttonAutoMessage = "Could you recommend me some games that I can play with 7 or more players; especially if they're best at 7 or more?"
+    elif Teach:
+        buttonAutoMessage = "I'm not super familiar with board game terminology, so I'm not sure how to ask you for recommendations. Could you tell me a bit about a few types of board games?"
+    elif Unsure:
+        buttonAutoMessage = "I'm a bit unsure how to start because I'm a bit new to board games. Could you help me figure out how where to start?"
+    elif Shuffle:
+        buttonAutoMessage = "Surprise me! Give me a few completely random games from the collection to choose from!"
     if buttonAutoMessage:
         #st.session_state.chat_log.append({"name": "user", "msg": buttonAutoMessage})
         run_stream(buttonAutoMessage, None, assistant_id)
