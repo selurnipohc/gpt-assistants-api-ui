@@ -226,12 +226,12 @@ def load_chat_screen(assistant_id, assistant_title):
     css = """
     <style>
         #wrapper {
-        display: flex;
-        width = 90%;
-        margin: auto;
-        background-color: #F2F7F7;
-        text-align: center;
-        justify-content: center;
+            display: flex;
+            width = 90%;
+            margin: auto;
+            background-color: #F2F7F7;
+            text-align: center;
+            justify-content: center;
         }
         
         #welcomeText {
@@ -263,24 +263,12 @@ def load_chat_screen(assistant_id, assistant_title):
     st.markdown(css, unsafe_allow_html=True)
 
     #Now construct Web Page via HTML
-    st.html('''
-    <div id="wrapper">
-        <div id="banner">
-            <div id="logoContainer">''')
-    st.image('DiversionsLogo.png',caption="Diversions Logo")
-    st.html('''</div>
-            <div id="welcomeContainer"><h1 id="welcomeText">Welcome!</h1></div>
-        </div>
-        <div id="instructions">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches.</div>''')
-    if st.button("Say hello"):
-        st.write("Why hello there")
-    else:
-        st.write("Goodbye")
-    st.html('''
-        <div id="playerCountOptions">I'll be player count bubbles someday</div>
-        <div id="starterPromptsContainer">I'm additional starter option bubbles</div>
-    </div>
-    ''')
+    wrapper = st.container()
+    with wrapper:
+        wrapper.markdown("<div id='wrapper'>", unsafe_allow_html=True)
+        wrapper.html('''
+        <h1>TESTING</h1>''')
+        wrapper.markdown("</div>", unsafe_allow_html=True)
         
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
