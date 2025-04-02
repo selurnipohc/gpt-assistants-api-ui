@@ -23,34 +23,9 @@ def str_to_bool(str_input):
 # Load environment variables
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 instructions = os.environ.get("RUN_INSTRUCTIONS", "")
-enabled_file_upload_message = os.environ.get(
-    "ENABLED_FILE_UPLOAD_MESSAGE", "Upload a file"
-)
-azure_openai_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
-azure_openai_key = os.environ.get("AZURE_OPENAI_KEY")
-authentication_required = str_to_bool(os.environ.get("AUTHENTICATION_REQUIRED", False))
+enabled_file_upload_message = False
 
-# Load authentication configuration
-if authentication_required:
-    if "credentials" in st.secrets:
-        authenticator = stauth.Authenticate(
-            st.secrets["credentials"].to_dict(),
-            st.secrets["cookie"]["name"],
-            st.secrets["cookie"]["key"],
-            st.secrets["cookie"]["expiry_days"],
-        )
-    else:
-        authenticator = None  # No authentication should be performed
-
-client = None
-if azure_openai_endpoint and azure_openai_key:
-    client = openai.AzureOpenAI(
-        api_key=azure_openai_key,
-        api_version="2024-05-01-preview",
-        azure_endpoint=azure_openai_endpoint,
-    )
-else:
-    client = openai.OpenAI(api_key=openai_api_key)
+client = openai.OpenAI(api_key=openai_api_key)
 
 
 class EventHandler(AssistantEventHandler):
@@ -291,42 +266,11 @@ def load_chat_screen(assistant_id, assistant_title):
 
 def main():
     # Check if multi-agent settings are defined
-    multi_agents = os.environ.get("OPENAI_ASSISTANTS", None)
     single_agent_id = os.environ.get("ASSISTANT_ID", None)
     single_agent_title = os.environ.get("ASSISTANT_TITLE", "Assistants API UI")
 
-    if (
-        authentication_required
-        and "credentials" in st.secrets
-        and authenticator is not None
-    ):
-        authenticator.login()
-        if not st.session_state["authentication_status"]:
-            login()
-            return
-        else:
-            authenticator.logout(location="sidebar")
-
-    if multi_agents:
-        assistants_json = json.loads(multi_agents)
-        assistants_object = {f'{obj["title"]}': obj for obj in assistants_json}
-        selected_assistant = st.sidebar.selectbox(
-            "Select an assistant profile?",
-            list(assistants_object.keys()),
-            index=None,
-            placeholder="Select an assistant profile...",
-            on_change=reset_chat,  # Call the reset function on change
-        )
-        if selected_assistant:
-            load_chat_screen(
-                assistants_object[selected_assistant]["id"],
-                assistants_object[selected_assistant]["title"],
-            )
-    elif single_agent_id:
-        load_chat_screen(single_agent_id, single_agent_title)
-    else:
-        st.error("No assistant configurations defined in environment variables.")
-
+    load_chat_screen(single_agent_id, single_agent_title)
+    
 
 if __name__ == "__main__":
     main()
