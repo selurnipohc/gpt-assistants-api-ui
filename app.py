@@ -366,7 +366,13 @@ def load_chat_screen(assistant_id, assistant_title):
 
     buttonAutoMessage = None
     if playerOne:
-        st.write('Clicked 1 Player Button')
+        buttonAutoMessage = "Could you recommend me some games that I can play with only 1 player; especially if they're best at one?"
+    if buttonAutoMessage:
+        st.session_state.chat_log.append({"name": "user", "msg": buttonAutoMessage})
+        run_stream(buttonAutoMessage, None, assistant_id)
+        st.session_state.in_progress = False
+        st.session_state.tool_call = None
+        st.rerun()
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
