@@ -247,12 +247,6 @@ def load_chat_screen(assistant_id, assistant_title):
             padding: 10px;
         }
 
-        button {
-            border: solid 2px #BBE4F1;
-            background: #EAF6FA;
-            margin: 5px;
-        }
-
         #underPlayerCountBlurb {
             color: #141F2B;
             text-align: center;
