@@ -366,9 +366,21 @@ def load_chat_screen(assistant_id, assistant_title):
 
     buttonAutoMessage = None
     if playerOne:
-        buttonAutoMessage = "Could you recommend me some games that I can play with only 1 player; especially if they're best at one?"
+        buttonAutoMessage = "Could you recommend me some games that I can play with only 1 player; especially if they're best at 1?"
+    elif playerTwo:
+        buttonAutoMessage = "Could you recommend me some games that I can play with only 2 players; especially if they're best at 2?"
+    elif playerThree:
+        buttonAutoMessage = "Could you recommend me some games that I can play with 3 players; especially if they're best at 3?"
+    elif playerFour:
+        buttonAutoMessage = "Could you recommend me some games that I can play with 4 players; especially if they're best at 4?"
+    elif playerFive:
+        buttonAutoMessage = "Could you recommend me some games that I can play with 5 players; especially if they're best at 5?"
+    elif playerSix:
+        buttonAutoMessage = "Could you recommend me some games that I can play with 6 players; especially if they're best at 6?"
+    elif playerSeven:
+        buttonAutoMessage = "Could you recommend me some games that I can play with 7 or more players; especially if they're best at 7 or more?"
     if buttonAutoMessage:
-        st.session_state.chat_log.append({"name": "user", "msg": buttonAutoMessage})
+        #st.session_state.chat_log.append({"name": "user", "msg": buttonAutoMessage})
         run_stream(buttonAutoMessage, None, assistant_id)
         st.session_state.in_progress = False
         st.session_state.tool_call = None
