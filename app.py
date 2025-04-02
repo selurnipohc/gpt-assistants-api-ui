@@ -208,13 +208,6 @@ def disable_form():
     st.session_state.in_progress = True
 
 
-def login():
-    if st.session_state["authentication_status"] is False:
-        st.error("Username/password is incorrect")
-    elif st.session_state["authentication_status"] is None:
-        st.warning("Please enter your username and password")
-
-
 def reset_chat():
     st.session_state.chat_log = []
     st.session_state.in_progress = False
