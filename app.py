@@ -225,9 +225,7 @@ def load_chat_screen(assistant_id, assistant_title):
     #First set Pertinent CSS
     css = """
     <style>
-        h1 {
-            position: absolute;
-            top: 0px;
+        .big-font {
             color: #2A4294;
             text-size: 10vh;
         }
@@ -237,7 +235,7 @@ def load_chat_screen(assistant_id, assistant_title):
         }
 
         #instructions {
-            font-size: 4rem;
+            font-size: 5vh;
             color: #141F2B;
         }
     </style>
@@ -246,8 +244,8 @@ def load_chat_screen(assistant_id, assistant_title):
     st.markdown(css, unsafe_allow_html=True)
 
     #Now construct Web Page via HTML
-    st.title('Welcome!')
     st.logo(image='DiversionsLogo.png')
+    st.markdown('<h1 class="big-font">Welcome!</h1>', unsafe_allow_html=True)
     st.html('''<div id="instructions"><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches</p></div>''')
 
     chatBox = st.container()
