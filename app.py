@@ -225,41 +225,18 @@ def load_chat_screen(assistant_id, assistant_title):
     #First set Pertinent CSS
     css = """
     <style>
-        #wrapper {
-            display: flex;
-            width = 90%;
-            margin: auto;
-            background-color: #F2F7F7;
-            text-align: center;
-            justify-content: center;
-        }
-        
         h1 {
             color: #2A4294;
-            text-size: 4.5rem
+            text-size: 4.5rem;
         }
 
-        #logo {
-            object-fit: contain;
-        }
-
-        #logoContainer {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 20%;
-            height: auto;
-        }
-
-        #welcomeContainer {
-            position: absolute;
-            margin-left: 40%;
-            width: 70%;
-            text-align: center;
-        }
-        
         img[data-testid="stLogo"] {
             height: 4.5rem;
+        }
+
+        #instructions {
+            font-size: 2rem;
+            color: #141F2B;
         }
     </style>
 """
@@ -269,6 +246,7 @@ def load_chat_screen(assistant_id, assistant_title):
     #Now construct Web Page via HTML
     st.title('Welcome!')
     st.logo(image='DiversionsLogo.png')
+    st.html('''<div id="instructions"><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches</p></div>''')
 
     chatBox = st.container()
     with chatBox:
