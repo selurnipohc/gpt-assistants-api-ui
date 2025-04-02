@@ -230,7 +230,8 @@ def load_chat_screen(assistant_id, assistant_title):
             font-size: 9vh;
             text-align: center;
             position: fixed;
-            top: 3vh;
+            top: 1.5vh;
+            left: 40vw;
         }
 
         img[data-testid="stLogo"] {
@@ -240,6 +241,9 @@ def load_chat_screen(assistant_id, assistant_title):
         #instructions {
             color: #141F2B;
             text-align: center;
+            position: fixed;
+            top: 5vh;
+            left: 40vw;
         }
 
         p {
