@@ -4,6 +4,7 @@ import re
 import json
 
 import streamlit as st
+import streamlit.components.v1 as components
 import openai
 from openai import AssistantEventHandler
 from tools import TOOL_MAP
@@ -262,7 +263,7 @@ def load_chat_screen(assistant_id, assistant_title):
     st.markdown(css, unsafe_allow_html=True)
 
     #Now construct Web Page via HTML
-    st.html('''
+    components.html('''
     <div id="wrapper">
         <div id="banner">
             <div id="logoContainer"><img id="logo" src="data:image/png;base64,{data_url}"></div>
@@ -273,7 +274,7 @@ def load_chat_screen(assistant_id, assistant_title):
         st.write("Why hello there")
     else:
         st.write("Goodbye")
-    st.html('''
+    components.html('''
         <div id="playerCountOptions">I'll be player count bubbles someday</div>
         <div id="starterPromptsContainer">I'm additional starter option bubbles</div>
     </div>
