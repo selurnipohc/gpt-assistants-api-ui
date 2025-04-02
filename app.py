@@ -238,7 +238,7 @@ def load_chat_screen(assistant_id, assistant_title):
             font-size: 2vh;
         }
 
-        .stVerticalBlock st-key-playerCountContainer st-emotion-cache-1ltwcv8 eu6p4el3 {
+        .st-key-playerCountContainer {
             align-text:center;
             justify-content: center;
             background: #E3E8E9;
