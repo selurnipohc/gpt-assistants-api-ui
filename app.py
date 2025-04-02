@@ -217,24 +217,23 @@ def load_chat_screen(assistant_id, assistant_title):
     #First set Pertinent CSS
     container_style = """
     <style>
-        .container1 {
+        .container {
             border: 2px solid #3498db;
             border-radius: 8px;
             padding: 10px;
             margin-bottom: 20px;
         }
-        .container2 {
-            /* Add styles for Container 2 if needed */
-        }
     </style>
 """
     #Enable CSS
     st.markdown(container_style, unsafe_allow_html=True)
+
+    #Now construct Web Page From Components
     st.title(assistant_title if assistant_title else "")
     st.logo('DiversionsLogo.png')
-    
-    with st.container() as container1:
-        container1.markdown("<div class='container1'>", unsafe_allow_html=True)
+    container = st.container()
+    with container:
+        container.markdown("<div class='container'>", unsafe_allow_html=True)
         user_msg = st.chat_input(
             "Message", on_submit=disable_form, disabled=st.session_state.in_progress
         )
@@ -250,11 +249,10 @@ def load_chat_screen(assistant_id, assistant_title):
             st.rerun()
     
         render_chat()
-        container1.markdown("</div>", unsafe_allow_html=True)
+        container.markdown("</div>", unsafe_allow_html=True)
 
 
 def main():
-    # Check if multi-agent settings are defined
     single_agent_id = os.environ.get("ASSISTANT_ID", None)
     single_agent_title = os.environ.get("ASSISTANT_TITLE", "Assistants API UI")
 
