@@ -188,11 +188,6 @@ def run_stream(user_input, file, selected_assistant_id):
         stream.until_done()
 
 
-def handle_uploaded_file(uploaded_file):
-    file = client.files.create(file=uploaded_file, purpose="assistants")
-    return file
-
-
 def render_chat():
     for chat in st.session_state.chat_log:
         with st.chat_message(chat["name"]):
@@ -253,10 +248,7 @@ def load_chat_screen(assistant_id, assistant_title):
             st.markdown(user_msg, True)
         st.session_state.chat_log.append({"name": "user", "msg": user_msg})
 
-        file = None
-        if uploaded_file is not None:
-            file = handle_uploaded_file(uploaded_file)
-        run_stream(user_msg, file, assistant_id)
+        run_stream(user_msg, None, assistant_id)
         st.session_state.in_progress = False
         st.session_state.tool_call = None
         st.rerun()
