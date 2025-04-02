@@ -241,7 +241,7 @@ def load_chat_screen(assistant_id, assistant_title):
         }
 
         p {
-            font-size: 3vh;
+            font-size: 2vh;
         }
     </style>
 """
@@ -252,7 +252,13 @@ def load_chat_screen(assistant_id, assistant_title):
     st.logo(image='DiversionsLogo.png')
     st.markdown('<h1 class="big-font">Welcome!</h1>', unsafe_allow_html=True)
     st.html('''<div id="instructions"><p>I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation and I'll find your best game matches</p></div>''')
-
+    playerCountContainer = st.container()
+    with playerCountContainer:
+        if st.button("Say hello"):
+            st.write("Why hello there")
+        else:
+            st.write("Goodbye")
+            
     chatBox = st.container()
     with chatBox:
         user_msg = st.chat_input(
