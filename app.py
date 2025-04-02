@@ -238,7 +238,7 @@ def load_chat_screen(assistant_id, assistant_title):
             font-size: 2vh;
         }
 
-        [data-testid="stVerticalBlockBorderWrapper"] {
+        .stVerticalBlock st-key-playerCountContainer st-emotion-cache-1ltwcv8 eu6p4el3 {
             align-text:center;
             justify-content: center;
             background: #E3E8E9;
@@ -247,6 +247,7 @@ def load_chat_screen(assistant_id, assistant_title):
         [data-testid="baseButton-secondary"] {
             border: solid 2px #BBE4F1;
             background: #EAF6FA;
+            margin: 5px;
         }
     </style>
 """ 
@@ -265,32 +266,32 @@ def load_chat_screen(assistant_id, assistant_title):
         else:
             st.write("Goodbye")
     with col2:
-        if st.button("2 Player",use_container_width=True):
+        if st.button("2 Players",use_container_width=True):
             st.write("2 Players")
         else:
             st.write("Goodbye")
     with col3:
-        if st.button("3 Player",use_container_width=True):
+        if st.button("3 Players",use_container_width=True):
             st.write("3 Players")
         else:
             st.write("Goodbye")
     with col4:
-        if st.button("4 Player",use_container_width=True):
+        if st.button("4 Players",use_container_width=True):
             st.write("4 Players")
         else:
             st.write("Goodbye")
     with col5:
-        if st.button("5 Player",use_container_width=True):
+        if st.button("5 Players",use_container_width=True):
             st.write("5 Players")
         else:
             st.write("Goodbye")
     with col6:
-        if st.button("6 Player",use_container_width=True):
+        if st.button("6 Players",use_container_width=True):
             st.write("6 Players")
         else:
             st.write("Goodbye")
     with col7:
-        if st.button("7 Player",use_container_width=True):
+        if st.button("7 Players",use_container_width=True):
             st.write("7 Players")
         else:
             st.write("Goodbye")
