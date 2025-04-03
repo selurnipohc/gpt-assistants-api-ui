@@ -263,6 +263,7 @@ def load_chat_screen(assistant_id, assistant_title):
     with stylable_container("resetButton",
                                 css_styles="""
                                     button {
+                                        position: fixed;
                                         background-color: #EC8824;
                                         color: #141F2B;
                                         border: 2px solid #141F2B;
