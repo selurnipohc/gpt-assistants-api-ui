@@ -265,7 +265,6 @@ def load_chat_screen(assistant_id, assistant_title):
                                     button {
                                         position: fixed;
                                         right: 10px;
-                                        top: 40px;
                                         background-color: #EC8824;
                                         color: #141F2B;
                                         border: 2px solid #141F2B;
