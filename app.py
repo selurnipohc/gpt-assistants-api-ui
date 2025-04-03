@@ -260,6 +260,17 @@ def load_chat_screen(assistant_id, assistant_title):
 
     #Now construct Web Page via HTML
     st.logo(image='DiversionsLogo.png')
+    with stylable_container("resetButton",
+                                css_styles="""
+                                    button {
+                                        display: fixed;
+                                        top: 10px;
+                                        right: 5px;
+                                        background-color: #EC8824;
+                                        color: #141F2B;
+                                        border: 2px solid #141F2B;
+                                }""",):
+            resetButton = st.button("Reset", key="resetButton")
     st.markdown('<h1 id="welcome">Welcome!</h1>', unsafe_allow_html=True)
     st.markdown('''<div id="instructionContainer"><b><p id="instructionText">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''',unsafe_allow_html=True)
     playerCountContainer = st.container(key="playerCountContainer")
@@ -368,6 +379,9 @@ def load_chat_screen(assistant_id, assistant_title):
                                 }""",):
             Shuffle = st.button("Shuffle and deal me", key="Shuffle",use_container_width=True)
 
+    if resetButton:
+        st.session_state.chat_log = []
+        render_chat()
     buttonAutoMessage = None
     if playerOne:
         buttonAutoMessage = "Could you recommend me some games that I can play with only 1 player; especially if they're best at 1?"
