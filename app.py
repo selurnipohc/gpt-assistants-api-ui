@@ -370,25 +370,25 @@ def load_chat_screen(assistant_id, assistant_title):
         render_chat()
     buttonAutoMessage = None
     if playerOne:
-        buttonAutoMessage = "Could you recommend me some games that I can play with only 1 player; especially if they're best at 1?"
+        buttonAutoMessage = "What are some of your top rated games for only 1 player; especially if the best player count is 1?"
     elif playerTwo:
-        buttonAutoMessage = "Could you recommend me some games that I can play with only 2 players; especially if they're best at 2?"
+        buttonAutoMessage = "What are some of your top rated games for only 2 players; especially if the best player count is 2?"
     elif playerThree:
-        buttonAutoMessage = "Could you recommend me some games that I can play with 3 players; especially if they're best at 3?"
+        buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 3?"
     elif playerFour:
-        buttonAutoMessage = "Could you recommend me some games that I can play with 4 players; especially if they're best at 4?"
+        buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 4?"
     elif playerFive:
-        buttonAutoMessage = "Could you recommend me some games that I can play with 5 players; especially if they're best at 5?"
+        buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 5?"
     elif playerSix:
-        buttonAutoMessage = "Could you recommend me some games that I can play with 6 players; especially if they're best at 6?"
+        buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 6?"
     elif playerSeven:
-        buttonAutoMessage = "Could you recommend me some games that I can play with 7 or more players; especially if they're best at 7 or more?"
+        buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 7?"
     elif Teach:
         buttonAutoMessage = "I'm not super familiar with board game terminology, so I'm not sure how to ask you for recommendations. Could you tell me a bit about a few types of board games?"
     elif Unsure:
         buttonAutoMessage = "I'm a bit unsure how to start because I'm a bit new to board games. Could you help me figure out how where to start?"
     elif Shuffle:
-        buttonAutoMessage = "Surprise me! Give me a few completely random games from the collection to choose from!"
+        buttonAutoMessage = "Surprise me! Can you shuffle the board game library list and deal me 5 games, completely at random?"
     if buttonAutoMessage:
         #st.session_state.chat_log.append({"name": "user", "msg": buttonAutoMessage})
         run_stream(buttonAutoMessage, None, assistant_id)
