@@ -268,7 +268,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            playerOne = st.button("1 Player", key="playerOne",use_container_width=True,icon=":material/counter_1:")
+            playerOne = st.button("1 Player", key="playerOne",use_container_width=True)
         
     with col2:
         with stylable_container("playerTwo",
