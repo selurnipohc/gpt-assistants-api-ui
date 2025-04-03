@@ -28,7 +28,6 @@ enabled_file_upload_message = False
 client = openai.OpenAI(api_key=openai_api_key)
 
 st.set_page_config(layout="wide")
-showReset = False
 
 class EventHandler(AssistantEventHandler):
     @override
@@ -382,6 +381,7 @@ def load_chat_screen(assistant_id, assistant_title):
 
     if resetButton:
         st.session_state.chat_log = []
+        del st.session_state['thread']
         render_chat()
     buttonAutoMessage = None
     if playerOne:
