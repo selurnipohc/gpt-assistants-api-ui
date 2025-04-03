@@ -55,7 +55,7 @@ class EventHandler(AssistantEventHandler):
     @override
     def on_text_done(self, text):
         #format_text = format_annotation(text)
-        format_text = text
+        format_text = text.value
         st.session_state.current_markdown.markdown(format_text, True)
         st.session_state.chat_log.append({"name": "assistant", "msg": format_text})
 
