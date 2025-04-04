@@ -397,7 +397,7 @@ def load_chat_screen(assistant_id, assistant_title):
             st.session_state.tool_call = None
             st.rerun()
     user_msg = st.chat_input(
-        "Message", on_submit=disable_form, disabled=st.session_state.in_progress
+        placeholder="Ask a custom question", accept_file=False,on_submit=disable_form, disabled=st.session_state.in_progress
     )
     if user_msg:
         with st.spinner("Now searching our entire board game library...", show_time=True):
