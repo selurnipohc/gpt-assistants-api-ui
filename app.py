@@ -342,7 +342,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            Teach = st.button("Teach me about board games", key="Teach",use_container_width=True)
+            Teach = st.button("Teach me about board games", key="Teach",use_container_width=True,disabled=st.session_state.in_progress)
 
     with altcol2:
         with stylable_container("Unsure",
@@ -352,7 +352,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            Unsure = st.button("I'm not sure where to start", key="Unsure",use_container_width=True)
+            Unsure = st.button("I'm not sure where to start", key="Unsure",use_container_width=True,disabled=st.session_state.in_progress)
 
     with altcol3:
         with stylable_container("Shuffle",
@@ -362,7 +362,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            Shuffle = st.button("Shuffle and deal me", key="Shuffle",use_container_width=True)
+            Shuffle = st.button("Shuffle and deal me", key="Shuffle",use_container_width=True,disabled=st.session_state.in_progress)
 
     if resetButton:
         st.session_state.chat_log = []
