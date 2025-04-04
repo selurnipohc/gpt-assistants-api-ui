@@ -255,7 +255,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                         color: #141F2B;
                                         border: 2px solid #141F2B;
                                 }""",):
-            resetButton = st.button("Reset", key="resetButton")
+            resetButton = st.button("Reset", key="resetButton",on_click=disable_form,disabled=st.session_state.in_progress)
     st.markdown('<h1 id="welcome">Welcome!</h1>', unsafe_allow_html=True)
     st.markdown('''<div id="instructionContainer"><b><p id="instructionText">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''',unsafe_allow_html=True)
     playerCountContainer = st.container(key="playerCountContainer")
@@ -268,7 +268,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            playerOne = st.button("1 Player", key="playerOne",use_container_width=True)
+            playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
         
     with col2:
         with stylable_container("playerTwo",
@@ -278,7 +278,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            playerTwo = st.button("2 Players", key="playerTwo",use_container_width=True)
+            playerTwo = st.button("2 Players", key="playerTwo",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
         
     with col3:
         with stylable_container("playerThree",
@@ -288,7 +288,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            playerThree = st.button("3 Players", key="playerThree",use_container_width=True)
+            playerThree = st.button("3 Players", key="playerThree",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
         
     with col4:
         with stylable_container("playerFour",
@@ -298,7 +298,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            playerFour = st.button("4 Players", key="playerFour",use_container_width=True)
+            playerFour = st.button("4 Players", key="playerFour",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
         
     with col5:
         with stylable_container("playerFive",
@@ -308,7 +308,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            playerFive = st.button("5 Players", key="playerFive",use_container_width=True)
+            playerFive = st.button("5 Players", key="playerFive",use_container_width=,on_click=disable_form,disabled=st.session_state.in_progressTrue)
         
     with col6:
         with stylable_container("playerSix",
@@ -318,7 +318,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            playerSix = st.button("6 Players", key="playerSix",use_container_width=True)
+            playerSix = st.button("6 Players", key="playerSix",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
         
     with col7:
         with stylable_container("playerSeven",
@@ -328,7 +328,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            playerSeven = st.button("7 Players", key="playerSeven",use_container_width=True)
+            playerSeven = st.button("7 Players", key="playerSeven",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
                                     
     playerCountContainer.markdown('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''',unsafe_allow_html=True)
 
@@ -367,6 +367,7 @@ def load_chat_screen(assistant_id, assistant_title):
     if resetButton:
         st.session_state.chat_log = []
         del st.session_state['thread']
+        st.session_state.in_progress = False
         render_chat()
     buttonAutoMessage = None
     if playerOne:
@@ -390,11 +391,12 @@ def load_chat_screen(assistant_id, assistant_title):
     elif Shuffle:
         buttonAutoMessage = "Surprise me! Can you shuffle the board game library list and deal me 5 games, completely at random?"
     if buttonAutoMessage:
-        render_chat()
-        run_stream(buttonAutoMessage, None, assistant_id)
-        st.session_state.in_progress = False
-        st.session_state.tool_call = None
-        st.rerun()
+        with st.spinner("Now searching our entire board game library...", show_time=True):
+            render_chat()
+            run_stream(buttonAutoMessage, None, assistant_id)
+            st.session_state.in_progress = False
+            st.session_state.tool_call = None
+            st.rerun()
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
