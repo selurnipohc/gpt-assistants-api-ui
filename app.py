@@ -255,7 +255,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                         color: #141F2B;
                                         border: 2px solid #141F2B;
                                 }""",):
-            resetButton = st.button("Reset", key="resetButton",on_click=disable_form,disabled=st.session_state.in_progress)
+            resetButton = st.button("Reset", key="resetButton")
     st.markdown('<h1 id="welcome">Welcome!</h1>', unsafe_allow_html=True)
     st.markdown('''<div id="instructionContainer"><b><p id="instructionText">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''',unsafe_allow_html=True)
     playerCountContainer = st.container(key="playerCountContainer")
@@ -367,7 +367,6 @@ def load_chat_screen(assistant_id, assistant_title):
     if resetButton:
         st.session_state.chat_log = []
         del st.session_state['thread']
-        st.session_state.in_progress = False
         render_chat()
     buttonAutoMessage = None
     if playerOne:
@@ -401,15 +400,16 @@ def load_chat_screen(assistant_id, assistant_title):
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
     if user_msg:
-        render_chat()
-        with st.chat_message("user"):
-            st.markdown(user_msg, True)
-        st.session_state.chat_log.append({"name": "user", "msg": user_msg})
-
-        run_stream(user_msg, None, assistant_id)
-        st.session_state.in_progress = False
-        st.session_state.tool_call = None
-        st.rerun()
+        with st.spinner("Now searching our entire board game library...", show_time=True):
+            render_chat()
+            with st.chat_message("user"):
+                st.markdown(user_msg, True)
+            st.session_state.chat_log.append({"name": "user", "msg": user_msg})
+    
+            run_stream(user_msg, None, assistant_id)
+            st.session_state.in_progress = False
+            st.session_state.tool_call = None
+            st.rerun()
 
     render_chat()
         
