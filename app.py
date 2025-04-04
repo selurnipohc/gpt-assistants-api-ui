@@ -308,7 +308,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            playerFive = st.button("5 Players", key="playerFive",use_container_width=,on_click=disable_form,disabled=st.session_state.in_progressTrue)
+            playerFive = st.button("5 Players", key="playerFive",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
         
     with col6:
         with stylable_container("playerSix",
