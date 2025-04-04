@@ -342,7 +342,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            Teach = st.button("Teach me about board games", key="Teach",use_container_width=True,disabled=st.session_state.in_progress)
+            Teach = st.button("Teach me about board games", key="Teach",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
 
     with altcol2:
         with stylable_container("Unsure",
@@ -352,7 +352,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            Unsure = st.button("I'm not sure where to start", key="Unsure",use_container_width=True,disabled=st.session_state.in_progress)
+            Unsure = st.button("I'm not sure where to start", key="Unsure",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
 
     with altcol3:
         with stylable_container("Shuffle",
@@ -362,7 +362,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                     color: #141F2B;
                                     border: 2px solid #141F2B;
                                 }""",):
-            Shuffle = st.button("Shuffle and deal me", key="Shuffle",use_container_width=True,disabled=st.session_state.in_progress)
+            Shuffle = st.button("Shuffle and deal me", key="Shuffle",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
 
     if resetButton:
         st.session_state.chat_log = []
@@ -390,7 +390,7 @@ def load_chat_screen(assistant_id, assistant_title):
     elif Shuffle:
         buttonAutoMessage = "Surprise me! Can you shuffle the board game library list and deal me 5 games, completely at random?"
     if buttonAutoMessage:
-        #st.session_state.chat_log.append({"name": "user", "msg": buttonAutoMessage})
+        render_chat()
         run_stream(buttonAutoMessage, None, assistant_id)
         st.session_state.in_progress = False
         st.session_state.tool_call = None
