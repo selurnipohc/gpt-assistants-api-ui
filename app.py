@@ -27,7 +27,7 @@ enabled_file_upload_message = False
 
 client = openai.OpenAI(api_key=openai_api_key)
 
-st.set_page_config(layout="wide")
+st.set_page_config(page_title = "Diversions Bot",page_icon="./favicon.ico",layout="wide")
 
 class EventHandler(AssistantEventHandler):
     @override
