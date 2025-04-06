@@ -376,19 +376,19 @@ def load_chat_screen(assistant_id, assistant_title):
     elif playerThree:
         buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 3?"
     elif playerFour:
-        buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 4?"
+        buttonAutoMessage = "What are some of your top rated games for 4 players; especially if the best player count is 4?"
     elif playerFive:
-        buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 5?"
+        buttonAutoMessage = "What are some of your top rated games for 5 players; especially if the best player count is 5?"
     elif playerSix:
-        buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 6?"
+        buttonAutoMessage = "What are some of your top rated games for 6 players; especially if the best player count is 6?"
     elif playerSeven:
-        buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 7?"
+        buttonAutoMessage = "What are some of your top rated games for 7 or more players; especially if the best player count is 7 or more?"
     elif Teach:
         buttonAutoMessage = "I'm not super familiar with board game terminology, so I'm not sure how to ask you for recommendations. Could you tell me a bit about a few types of board games?"
     elif Unsure:
         buttonAutoMessage = "I'm a bit unsure how to start because I'm a bit new to board games. Could you help me figure out how where to start?"
     elif Shuffle:
-        buttonAutoMessage = "Surprise me! Can you shuffle the board game library list and deal me 5 games, completely at random?"
+        buttonAutoMessage = "Surprise me! With equal odds for every game in the library, could you randomly pick 5 games and give them to me?"
     if buttonAutoMessage:
         with st.spinner("Now searching our entire board game library...", show_time=True):
             render_chat()
