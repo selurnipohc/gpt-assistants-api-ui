@@ -255,7 +255,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                         color: #141F2B;
                                         border: 2px solid #141F2B;
                                 }""",):
-            resetButton = st.button("Reset", key="resetButton")
+            resetButton = st.button("Reset", key="resetButton",disabled=st.session_state.in_progress)
     st.markdown('<h1 id="welcome">Welcome!</h1>', unsafe_allow_html=True)
     st.markdown('''<div id="instructionContainer"><b><p id="instructionText">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''',unsafe_allow_html=True)
     playerCountContainer = st.container(key="playerCountContainer")
@@ -365,10 +365,14 @@ def load_chat_screen(assistant_id, assistant_title):
             Shuffle = st.button("Shuffle and deal me", key="Shuffle",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
 
     if resetButton:
-        st.session_state.chat_log = []
-        del st.session_state['thread']
-        render_chat()
         st.session_state.in_progress = False
+        st.session_state.chat_log = []
+        try:
+            del st.session_state['thread']
+        except:
+            pass
+        render_chat()
+        
     buttonAutoMessage = None
     if playerOne:
         buttonAutoMessage = "What are some of your top rated games for only 1 player; especially if the best player count is 1?"
