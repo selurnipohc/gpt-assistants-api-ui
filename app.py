@@ -171,7 +171,7 @@ def run_stream(user_input, file, selected_assistant_id):
 
 
 def render_chat():
-    for chat in st.session_state.chat_log:
+    for chat in st.session_state.chat_log[::-1]:
         with st.chat_message(chat["name"]):
             st.markdown(chat["msg"], True)
 
@@ -368,6 +368,7 @@ def load_chat_screen(assistant_id, assistant_title):
         st.session_state.chat_log = []
         del st.session_state['thread']
         render_chat()
+        st.session_state.in_progress = False
     buttonAutoMessage = None
     if playerOne:
         buttonAutoMessage = "What are some of your top rated games for only 1 player; especially if the best player count is 1?"
