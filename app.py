@@ -313,14 +313,16 @@ def load_chat_screen(assistant_id, assistant_title):
         playerOne = click_detector(content)
         
     with col2:
-        with stylable_container("playerTwo",
-                                css_styles="""
-                                    button {
-                                    background-color: #BBE4F1;
-                                    color: #141F2B;
-                                    border: 2px solid #141F2B;
-                                }""",):
-            playerTwo = st.button("2 Players", key="playerTwo",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
+        # with stylable_container("playerTwo",
+        #                         css_styles="""
+        #                             button {
+        #                             background-color: #BBE4F1;
+        #                             color: #141F2B;
+        #                             border: 2px solid #141F2B;
+        #                         }""",):
+        #     playerTwo = st.button("2 Players", key="playerTwo",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
+        content = f'<a href="#" id="Image 2"><img src="{encodedImage2}" style="width:100%; justify-content:center; background-color:#E3E8E9; cursor: pointer;"></a>'
+        playerTwo = click_detector(content)
         
     with col3:
         with stylable_container("playerThree",
@@ -416,10 +418,12 @@ def load_chat_screen(assistant_id, assistant_title):
         render_chat()
         
     buttonAutoMessage = None
-    st.markdown(f"**{playerOne} clicked**" if playerOne != "" else "**No click**")
-    if playerOne:
+    
+    if playerOne and playerOne!=st.session_state["lastClicked"]:
+        st.session_state["lastClicked"] = playerOne
         buttonAutoMessage = "What are some of your top rated games for only 1 player; especially if the best player count is 1?"
-    elif playerTwo:
+    elif playerTwo and playerTwo!=st.session_state["lastClicked"]:
+        st.session_state["lastClicked"] = playerTwo
         buttonAutoMessage = "What are some of your top rated games for only 2 players; especially if the best player count is 2?"
     elif playerThree:
         buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 3?"
@@ -439,7 +443,6 @@ def load_chat_screen(assistant_id, assistant_title):
         buttonAutoMessage = "Surprise me! With equal odds for every game in the library, could you randomly pick 5 games and give them to me?"
     if buttonAutoMessage:
         with st.spinner("Now searching our entire board game library...", show_time=True):
-            playerOne = -1
             render_chat()
             run_stream(buttonAutoMessage, None, assistant_id)
             st.session_state.in_progress = False
