@@ -416,7 +416,7 @@ def load_chat_screen(assistant_id, assistant_title):
         render_chat()
         
     buttonAutoMessage = None
-    st.markdown(f"**{playerOne} clicked**" if clicked != "" else "**No click**")
+    st.markdown(f"**{playerOne} clicked**" if playerOne != "" else "**No click**")
     if playerOne:
         buttonAutoMessage = "What are some of your top rated games for only 1 player; especially if the best player count is 1?"
     elif playerTwo:
