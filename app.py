@@ -5,6 +5,7 @@ import json
 
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
+from st_clickable_images import clickable_images
 import openai
 from openai import AssistantEventHandler
 from tools import TOOL_MAP
@@ -13,11 +14,49 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+#Process Local Images Into Base64______________________________
+encodedImage1 = None     
+encodedImage2 = None
+encodedImage3 = None
+encodedImage4 = None
+encodedImage5 = None
+encodedImage6 = None
+encodedImage7 = None
+
+with open('assets/1.png','rb') as f:
+    encoded = base64.b64encode(f.read()).decode()
+    encodedImage1 = f"data:image/jpeg;base64,{encoded}"
+
+with open('assets/2.png','rb') as f:
+    encoded = base64.b64encode(f.read()).decode()
+    encodedImage2 = f"data:image/jpeg;base64,{encoded}"
+
+with open('assets/3.png','rb') as f:
+    encoded = base64.b64encode(f.read()).decode()
+    encodedImage3 = f"data:image/jpeg;base64,{encoded}"
+
+with open('assets/4.png','rb') as f:
+    encoded = base64.b64encode(f.read()).decode()
+    encodedImage4 = f"data:image/jpeg;base64,{encoded}"
+
+with open('assets/5.png','rb') as f:
+    encoded = base64.b64encode(f.read()).decode()
+    encodedImage5 = f"data:image/jpeg;base64,{encoded}"
+
+with open('assets/6.png','rb') as f:
+    encoded = base64.b64encode(f.read()).decode()
+    encodedImage6 = f"data:image/jpeg;base64,{encoded}"
+
+with open('assets/7.png','rb') as f:
+    encoded = base64.b64encode(f.read()).decode()
+    encodedImage7 = f"data:image/jpeg;base64,{encoded}"
 
 def str_to_bool(str_input):
     if not isinstance(str_input, str):
         return False
     return str_input.lower() == "true"
+
+#Finished Pre-Processing Images________________________________
 
 
 # Load environment variables
@@ -261,14 +300,15 @@ def load_chat_screen(assistant_id, assistant_title):
     playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     with col1:
-        with stylable_container("playerOne",
-                                css_styles="""
-                                    button {
-                                    background-color: #BBE4F1;
-                                    color: #141F2B;
-                                    border: 2px solid #141F2B;
-                                }""",):
-            playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
+        # with stylable_container("playerOne",
+        #                         css_styles="""
+        #                             button {
+        #                             background-color: #BBE4F1;
+        #                             color: #141F2B;
+        #                             border: 2px solid #141F2B;
+        #                         }""",):
+        #     playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
+        playerOne = clickable_images([encodedImage1],titles=["Player 1"],div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},img_style={"margin": "5px", "width": "10%"})
         
     with col2:
         with stylable_container("playerTwo",
