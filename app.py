@@ -309,7 +309,7 @@ def load_chat_screen(assistant_id, assistant_title):
         #                             border: 2px solid #141F2B;
         #                         }""",):
         #     playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
-        content = f'<img id="Image 1" src="{encodedImage1}" style="width:100%; justify-content:center; background-color:#BBE4F1;">'
+        content = f'<img id="Image 1" src="{encodedImage1}" style="width:100%; justify-content:center; background-color:#BBE4F1; cursor: pointer;">'
         playerOne = click_detector(content)
         
     with col2:
