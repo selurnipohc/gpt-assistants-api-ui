@@ -309,7 +309,7 @@ def load_chat_screen(assistant_id, assistant_title):
         #                             border: 2px solid #141F2B;
         #                         }""",):
         #     playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
-        content = f'<img id="player1Image" src="{encodedImage1}">'
+        content = f'<img id="Image 1" src="{encodedImage1}" style="width:100%; justify-content:center; background-color:#BBE4F1;">'
         playerOne = click_detector(content)
         
     with col2:
@@ -372,7 +372,7 @@ def load_chat_screen(assistant_id, assistant_title):
                                 }""",):
             playerSeven = st.button("7 Players", key="playerSeven",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
                                     
-    playerCountContainer.markdown('''<div id="underPlayerCountBlurb"><b><p id="underPlayerCountBlurbText">View Top Games by Player Count</p></b></div>''',unsafe_allow_html=True)
+    playerCountContainer.markdown('''<div id="underPlayerCountBlurb"><p id="underPlayerCountBlurbText"><strong>View Top Games by Player Count</strong></p></div>''',unsafe_allow_html=True)
 
     alternateStartersContainer = st.container(key="alternateStartersContainer")
     altcol1, altcol2, altcol3 = alternateStartersContainer.columns(3)
@@ -416,7 +416,7 @@ def load_chat_screen(assistant_id, assistant_title):
         render_chat()
         
     buttonAutoMessage = None
-    if playerOne!=-1:
+    if playerOne:
         st.markdown(f"Image #{playerOne} clicked" if playerOne > -1 else "No image clicked")
         buttonAutoMessage = "What are some of your top rated games for only 1 player; especially if the best player count is 1?"
     elif playerTwo:
