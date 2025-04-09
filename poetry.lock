@@ -2363,6 +2363,21 @@ files = [
 htbuilder = "*"
 
 [[package]]
+name = "st-clickable-images"
+version = "0.0.3"
+description = "A Streamlit component to display clickable images"
+optional = false
+python-versions = ">=3.6"
+groups = ["main"]
+files = [
+    {file = "st-clickable-images-0.0.3.tar.gz", hash = "sha256:84a1337f9364bdb8f5a3c4d85faa6695fd959f449915a616a3a3a47e37b1f7f1"},
+    {file = "st_clickable_images-0.0.3-py3-none-any.whl", hash = "sha256:c35555a660233be01f502202a210f01129f9d111033a8b1f2a4dac0ae177fcd8"},
+]
+
+[package.dependencies]
+streamlit = ">=0.63"
+
+[[package]]
 name = "st-theme"
 version = "1.2.3"
 description = "A component that returns the active theme of the Streamlit app."
@@ -2843,4 +2858,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10 || ^3.11"
-content-hash = "c8cda4301d77118e3e71fabeed811b5e58325646cc80e1fc267b4aaede5196d4"
+content-hash = "7bbd8198b531d213ca913bb43279069ae0d9845c5d17f67d0a2568f02d6a6a0e"
