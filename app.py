@@ -308,7 +308,7 @@ def load_chat_screen(assistant_id, assistant_title):
         #                             border: 2px solid #141F2B;
         #                         }""",):
         #     playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
-        playerOne = clickable_images([encodedImage1],titles=["Player 1"],div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},img_style={"margin": "5px", "width": "10%"})
+        #playerOne = clickable_images([encodedImage1],titles=["Player 1"],div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},img_style={"margin": "5px", "width": "10%"})
         
     with col2:
         with stylable_container("playerTwo",
