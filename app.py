@@ -308,7 +308,7 @@ def load_chat_screen(assistant_id, assistant_title):
         #                             border: 2px solid #141F2B;
         #                         }""",):
         #     playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
-        playerOne = clickable_images([encodedImage1],titles=["Player 1"],div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},img_style={"margin": "5px", "width": "100%"})
+        playerOne = clickable_images([encodedImage1],titles=["Player 1"],div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},img_style={"width": "100%","cursor": "pointer"})
         
     with col2:
         with stylable_container("playerTwo",
@@ -437,6 +437,7 @@ def load_chat_screen(assistant_id, assistant_title):
         buttonAutoMessage = "Surprise me! With equal odds for every game in the library, could you randomly pick 5 games and give them to me?"
     if buttonAutoMessage:
         with st.spinner("Now searching our entire board game library...", show_time=True):
+            playerOne = -1
             render_chat()
             run_stream(buttonAutoMessage, None, assistant_id)
             st.session_state.in_progress = False
