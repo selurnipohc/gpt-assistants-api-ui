@@ -5,7 +5,7 @@ import json
 
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
-from st_clickable_images import clickable_images
+from st_click_detector import click_detector
 import openai
 from openai import AssistantEventHandler
 from tools import TOOL_MAP
@@ -308,7 +308,8 @@ def load_chat_screen(assistant_id, assistant_title):
         #                             border: 2px solid #141F2B;
         #                         }""",):
         #     playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
-        playerOne = clickable_images([encodedImage1],titles=["Player 1"],div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},img_style={"width": "100%","cursor": "pointer"})
+        content = f'<img src="{encodedImage1}">'
+        playerOne = click_detector(content,key="playerOneImage")
         
     with col2:
         with stylable_container("playerTwo",
