@@ -5,7 +5,7 @@ import json
 
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
-from st_click_detector import click_detector
+#from st_click_detector import click_detector
 import openai
 from openai import AssistantEventHandler
 from tools import TOOL_MAP
@@ -15,48 +15,50 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #Process Local Images Into Base64______________________________
-encodedImage1 = None     
-encodedImage2 = None
-encodedImage3 = None
-encodedImage4 = None
-encodedImage5 = None
-encodedImage6 = None
-encodedImage7 = None
+# encodedImage1 = None     
+# encodedImage2 = None
+# encodedImage3 = None
+# encodedImage4 = None
+# encodedImage5 = None
+# encodedImage6 = None
+# encodedImage7 = None
 
-with open('assets/1.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage1 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/1.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage1 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/2.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage2 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/2.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage2 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/3.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage3 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/3.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage3 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/4.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage4 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/4.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage4 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/5.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage5 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/5.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage5 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/6.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage6 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/6.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage6 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/7.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage7 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/7.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage7 = f"data:image/jpeg;base64,{encoded}"
+
+
+#Finished Pre-Processing Images________________________________
+
 
 def str_to_bool(str_input):
     if not isinstance(str_input, str):
         return False
     return str_input.lower() == "true"
-
-#Finished Pre-Processing Images________________________________
 
 
 # Load environment variables
@@ -67,7 +69,6 @@ enabled_file_upload_message = False
 client = openai.OpenAI(api_key=openai_api_key)
 
 st.set_page_config(page_title = "Diversions Bot",page_icon="./favicon.ico",layout="wide")
-st.session_state["lastClicked"] = None
 
 class EventHandler(AssistantEventHandler):
     @override
@@ -302,28 +303,28 @@ def load_chat_screen(assistant_id, assistant_title):
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
     
     with col1:
-        # with stylable_container("playerOne",
-        #                         css_styles="""
-        #                             button {
-        #                             background-color: #BBE4F1;
-        #                             color: #141F2B;
-        #                             border: 2px solid #141F2B;
-        #                         }""",):
-        #     playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
-        content = f'<a href="#" id="Image 1"><img src="{encodedImage1}" style="width:100%; justify-content:center; background-color:#E3E8E9; cursor: pointer;"></a>'
-        playerOne = click_detector(content)
+        with stylable_container("playerOne",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
+        # content = f'<a href="#" id="Image 1"><img src="{encodedImage1}" style="width:100%; justify-content:center; background-color:#E3E8E9; cursor: pointer;"></a>'
+        # playerOne = click_detector(content)
         
     with col2:
-        # with stylable_container("playerTwo",
-        #                         css_styles="""
-        #                             button {
-        #                             background-color: #BBE4F1;
-        #                             color: #141F2B;
-        #                             border: 2px solid #141F2B;
-        #                         }""",):
-        #     playerTwo = st.button("2 Players", key="playerTwo",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
-        content = f'<a href="#" id="Image 2"><img src="{encodedImage2}" style="width:100%; justify-content:center; background-color:#E3E8E9; cursor: pointer;"></a>'
-        playerTwo = click_detector(content)
+        with stylable_container("playerTwo",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            playerTwo = st.button("2 Players", key="playerTwo",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
+        # content = f'<a href="#" id="Image 2"><img src="{encodedImage2}" style="width:100%; justify-content:center; background-color:#E3E8E9; cursor: pointer;"></a>'
+        # playerTwo = click_detector(content)
         
     with col3:
         with stylable_container("playerThree",
@@ -420,11 +421,9 @@ def load_chat_screen(assistant_id, assistant_title):
         
     buttonAutoMessage = None
     
-    if playerOne and playerOne!=st.session_state["lastClicked"]:
-        st.session_state["lastClicked"] = playerOne
+    if playerOne:
         buttonAutoMessage = "What are some of your top rated games for only 1 player; especially if the best player count is 1?"
-    elif playerTwo and playerTwo!=st.session_state["lastClicked"]:
-        st.session_state["lastClicked"] = playerTwo
+    elif playerTwo:
         buttonAutoMessage = "What are some of your top rated games for only 2 players; especially if the best player count is 2?"
     elif playerThree:
         buttonAutoMessage = "What are some of your top rated games for 3 players; especially if the best player count is 3?"
