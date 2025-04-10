@@ -301,20 +301,17 @@ def load_chat_screen(assistant_id, assistant_title):
     st.markdown('''<div id="instructionContainer"><b><p id="instructionText">I'm Johm.<br>I know the Diversions game library inside and out!<br>Ask me for a recommendation!</p></b></div>''',unsafe_allow_html=True)
     playerCountContainer = st.container(key="playerCountContainer")
     col1, col2, col3, col4, col5, col6, col7 = playerCountContainer.columns(7)
-    playerOne = False
+    
     with col1:
-        # with stylable_container("playerOne",
-        #                         css_styles="""
-        #                             button {
-        #                             background-color: #BBE4F1;
-        #                             color: #141F2B;
-        #                             border: 2px solid #141F2B;
-        #                         }""",):
-        #     playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
+        with stylable_container("playerOne",
+                                css_styles="""
+                                    button {
+                                    background-color: #BBE4F1;
+                                    color: #141F2B;
+                                    border: 2px solid #141F2B;
+                                }""",):
+            playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
         
-        st.write(f'<a href="#" id="Image 1"><img src="{encodedImage1}" style="width:100%; justify-content:center; background-color:#E3E8E9; cursor: pointer;"></a>',unsafe_allow_html=True)
-        if st.button("Image 1"):
-            playerOne = True
         
     with col2:
         with stylable_container("playerTwo",
