@@ -312,8 +312,8 @@ def load_chat_screen(assistant_id, assistant_title):
         #                         }""",):
         #     playerOne = st.button("1 Player", key="playerOne",use_container_width=True,on_click=disable_form,disabled=st.session_state.in_progress)
         st.write(f'<a href="#" id="Image 1"><img src="{encodedImage1}" style="width:100%; justify-content:center; background-color:#E3E8E9; cursor: pointer;"></a>',unsafe_allow_html=True)
-        if st.button("Image 1"):
-            st.write("Image Clicked")
+        # if st.button("Image 1"):
+        #     st.write("Image Clicked")
         
     with col2:
         with stylable_container("playerTwo",
