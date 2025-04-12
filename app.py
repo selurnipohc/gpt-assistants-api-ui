@@ -212,7 +212,7 @@ def run_stream(user_input, file, selected_assistant_id):
 
 
 def render_chat():
-    for chat in st.session_state.chat_log[::-1]:
+    for chat in st.session_state.chat_log:
         with st.chat_message(chat["name"]):
             st.markdown(chat["msg"], True)
 
