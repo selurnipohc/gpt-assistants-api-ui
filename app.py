@@ -210,8 +210,9 @@ def run_stream(user_input, file, selected_assistant_id):
             event_handler=EventHandler(),
         ) as stream:
             stream.until_done()
+        return True
     except:
-        False
+        return False
 
 
 def render_chat():
