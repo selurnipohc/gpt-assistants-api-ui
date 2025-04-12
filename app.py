@@ -200,15 +200,18 @@ def format_annotation(text):
 
 
 def run_stream(user_input, file, selected_assistant_id):
-    if "thread" not in st.session_state:
-        st.session_state.thread = create_thread(user_input, file)
-    create_message(st.session_state.thread, user_input, file)
-    with client.beta.threads.runs.stream(
-        thread_id=st.session_state.thread.id,
-        assistant_id=selected_assistant_id,
-        event_handler=EventHandler(),
-    ) as stream:
-        stream.until_done()
+    try:
+        if "thread" not in st.session_state:
+            st.session_state.thread = create_thread(user_input, file)
+        create_message(st.session_state.thread, user_input, file)
+        with client.beta.threads.runs.stream(
+            thread_id=st.session_state.thread.id,
+            assistant_id=selected_assistant_id,
+            event_handler=EventHandler(),
+        ) as stream:
+            stream.until_done()
+    except:
+        False
 
 
 def render_chat():
@@ -443,7 +446,8 @@ def load_chat_screen(assistant_id, assistant_title):
     if buttonAutoMessage:
         with st.spinner("Now searching our entire board game library...", show_time=True):
             render_chat()
-            run_stream(buttonAutoMessage, None, assistant_id)
+            if not run_stream(buttonAutoMessage, None, assistant_id):
+                st.session_state.chat_log.append({'msg':"Apologies, I experienced an error trying to process your request. It seems like it was a momentary outage. Please refresh the page and ask again; I'll do my best not to break again!"})
             st.session_state.in_progress = False
             st.session_state.tool_call = None
             st.rerun()
