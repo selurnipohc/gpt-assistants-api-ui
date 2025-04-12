@@ -15,41 +15,41 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #Process Local Images Into Base64______________________________
-encodedImage1 = None     
-encodedImage2 = None
-encodedImage3 = None
-encodedImage4 = None
-encodedImage5 = None
-encodedImage6 = None
-encodedImage7 = None
+# encodedImage1 = None     
+# encodedImage2 = None
+# encodedImage3 = None
+# encodedImage4 = None
+# encodedImage5 = None
+# encodedImage6 = None
+# encodedImage7 = None
 
-with open('assets/1.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage1 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/1.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage1 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/2.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage2 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/2.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage2 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/3.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage3 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/3.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage3 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/4.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage4 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/4.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage4 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/5.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage5 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/5.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage5 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/6.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage6 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/6.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage6 = f"data:image/jpeg;base64,{encoded}"
 
-with open('assets/7.png','rb') as f:
-    encoded = base64.b64encode(f.read()).decode()
-    encodedImage7 = f"data:image/jpeg;base64,{encoded}"
+# with open('assets/7.png','rb') as f:
+#     encoded = base64.b64encode(f.read()).decode()
+#     encodedImage7 = f"data:image/jpeg;base64,{encoded}"
 
 
 #Finished Pre-Processing Images________________________________
