@@ -447,7 +447,7 @@ def load_chat_screen(assistant_id, assistant_title):
         with st.spinner("Now searching our entire board game library...", show_time=True):
             render_chat()
             if not run_stream(buttonAutoMessage, None, assistant_id):
-                st.session_state.chat_log.append({'msg':"Apologies, I experienced an error trying to process your request. It seems like it was a momentary outage. Please refresh the page and ask again; I'll do my best not to break again!"})
+                st.session_state.chat_log.append({"name": "assistant","msg":"Apologies, I experienced an error trying to process your request. It seems like it was a momentary outage. Please refresh the page and ask again; I'll do my best not to break again!"})
             st.session_state.in_progress = False
             st.session_state.tool_call = None
             st.rerun()
